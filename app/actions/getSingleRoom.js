@@ -3,21 +3,22 @@
 import { createAdminClient } from "@/config/appwrite";
 import { redirect } from "next/navigation";
 
-async function getAllRooms() {
+async function getSingleRoom(id) {
   try {
     const { databases } = await createAdminClient();
 
     // Fetch rooms
-    const { documents: rooms } = await databases.listDocuments(
+    const room = await databases.getDocument(
       process.env.NEXT_PUBLIC_APPWRITE_DATABASE,
-      process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ROOMS
+      process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ROOMS,
+      id
     );
 
-    return rooms;
+    return room;
   } catch (error) {
-    console.log("Failed to get rooms", error);
+    console.log("Failed to get room", error);
     redirect("/error");
   }
 }
 
-export default getAllRooms;
+export default getSingleRoom;
