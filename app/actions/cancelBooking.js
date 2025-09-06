@@ -3,7 +3,7 @@
 import { createSessionClient } from "@/config/appwrite";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import { Query } from "node-appwrite";
+import checkAuth from "./checkAuth";
 
 async function getMyRooms() {
   const sessionCookie = (await cookies()).get("appwrite-session");
