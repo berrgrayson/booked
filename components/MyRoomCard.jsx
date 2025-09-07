@@ -3,6 +3,7 @@ import { FaEye } from "react-icons/fa";
 import DeleteRoomButton from "./DeleteRoomButton";
 
 const MyRoomCard = ({ room }) => {
+  // console.log(room);
   return (
     <div className="bg-white shadow rounded-lg p-4 mt-4 flex flex-col sm:flex-row justify-between items-center">
       <div className="flex flex-col">

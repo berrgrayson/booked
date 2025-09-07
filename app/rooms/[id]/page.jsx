@@ -6,7 +6,7 @@ import { FaChevronLeft } from "react-icons/fa";
 import getSingleRoom from "@/app/actions/getSingleRoom";
 
 const RoomPage = async ({ params }) => {
-  const { id } = params;
+  const { id } = await params;
   const room = await getSingleRoom(id);
 
   if (!room) {
