@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "luxon": "^3.7.2",
     "next": "15.5.2",
     "node-appwrite": "^18.0.0",
     "react": "19.1.0",

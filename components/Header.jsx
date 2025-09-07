@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/assets/images/logo.svg";
+import logo from "@/assets/images/logo.png";
 import { FaUser, FaSignInAlt, FaSignOutAlt, FaBuilding } from "react-icons/fa";
 import { toast } from "react-toastify";
 import destroySession from "@/app/actions/destroySession";
@@ -32,7 +32,7 @@ const Header = () => {
           <div className="flex items-center">
             <Link href="/">
               <Image
-                className="h-12 w-12"
+                className="h-10 w-10"
                 src={logo}
                 alt="Bookit"
                 priority={true}
