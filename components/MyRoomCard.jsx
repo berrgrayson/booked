@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaEye } from "react-icons/fa";
+import { FaEye, FaEdit } from "react-icons/fa";
 import DeleteRoomButton from "./DeleteRoomButton";
 
 const MyRoomCard = ({ room }) => {
@@ -15,6 +15,13 @@ const MyRoomCard = ({ room }) => {
           className="bg-blue-500 text-white px-4 py-2 rounded mb-2 sm:mb-0 w-full sm:w-auto text-center hover:bg-blue-700"
         >
           <FaEye className="inline mr-1" /> View
+        </Link>
+
+        <Link
+          href={`/rooms/update/${room.$id}`} // Link to update page
+          className="bg-yellow-500 text-white px-4 py-2 rounded mb-2 sm:mb-0 w-full sm:w-auto text-center hover:bg-yellow-700"
+        >
+          <FaEdit className="inline mr-1" /> Update
         </Link>
 
         <DeleteRoomButton roomId={room.$id} />

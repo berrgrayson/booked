@@ -4,6 +4,7 @@ import { createSessionClient } from "@/config/appwrite";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { Query } from "node-appwrite";
+
 async function deleteRoom(roomId) {
   const sessionCookie = (await cookies()).get("appwrite-session");
   if (!sessionCookie) {
