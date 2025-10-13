@@ -1,6 +1,6 @@
 "use server";
 
-import { createAdminClient } from "@/config/appwrite";
+import { createAdminClient, createSessionClient } from "@/config/appwrite";
 import { cookies } from "next/headers";
 
 async function createSession(previousState, formData) {
@@ -13,10 +13,10 @@ async function createSession(previousState, formData) {
     };
   }
 
-  // Get account instance
-  const { account } = await createAdminClient();
-
   try {
+    // Get account instance with admin client
+    const { account } = await createAdminClient();
+
     // Generate session
     const session = await account.createEmailPasswordSession(email, password);
 
@@ -29,17 +29,22 @@ async function createSession(previousState, formData) {
       path: "/",
     });
 
+    // Get user details with session client
+    const { account: sessionAccount } = await createSessionClient(
+      session.secret
+    );
+    const user = await sessionAccount.get();
+
     return {
       success: true,
+      userName: user.name || user.email || "User", // Fallback to email or "User"
     };
   } catch (error) {
     console.log("Authentication Error: ", error);
     return {
-      error: "Invalid Creadentials",
+      error: "Invalid Credentials",
     };
   }
-
-  // console.log(email, password);
 }
 
 export default createSession;

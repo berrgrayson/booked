@@ -11,17 +11,18 @@ import { useAuth } from "@/context/authContext";
 const LoginPage = () => {
   const [state, formAction] = useFormState(createSession, {});
   const { isAuthenticated, setIsAuthenticated } = useAuth();
-
   const router = useRouter();
 
   useEffect(() => {
-    if (state.error) toast.error(state.error);
+    if (state.error) {
+      toast.error(state.error);
+    }
     if (state.success) {
-      toast.success("Logged in successfully!");
+      toast.success(`Welcome ${state.userName}!`);
       setIsAuthenticated(true);
       router.push("/");
     }
-  }, [state]);
+  }, [state, setIsAuthenticated, router]);
 
   return (
     <div className="flex items-center justify-center">
