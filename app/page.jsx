@@ -3,6 +3,8 @@ import RoomCard from "@/components/RoomCard";
 import getAllRooms from "./actions/getAllRooms";
 import { FaWifi, FaPlug, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 
+export const dynamic = "force-dynamic"; // This line forces dynamic rendering
+
 export default async function Home() {
   const rooms = await getAllRooms();
 
