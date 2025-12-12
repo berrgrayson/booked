@@ -7,7 +7,6 @@ import RoomBookingCard from "@/components/RoomBookingCard";
 import Link from "next/link";
 import { cookies } from "next/headers";
 import { FaChevronLeft } from "react-icons/fa";
-import Announcement from "@/components/Announcement";
 
 export default async function RoomBookingsPage({ params, searchParams }) {
   const { id } = await params; // Unwrap room ID from params
@@ -25,12 +24,6 @@ export default async function RoomBookingsPage({ params, searchParams }) {
 
   return (
     <>
-      <Announcement
-        title="How to Manage Bookings"
-        message="As the room owner, you can view and cancel bookings for this room. Use the 'Cancel Booking' button to remove unwanted bookings."
-        type="info"
-        dismissible={true}
-      />
       <Link
         href="/rooms/my"
         className="flex items-center text-gray-600 hover:text-gray-800 mb-4"
